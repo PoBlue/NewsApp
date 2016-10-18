@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
         implements LoaderCallbacks<List<Article>> {
@@ -33,6 +35,21 @@ public class MainActivity extends AppCompatActivity
 
         initListView();
         initLoader();
+        updateProperly();
+    }
+
+    private void updateProperly(){
+        int delay = 60000; // delay for 60 sec.
+        int period = 60000; // repeat every 60 sec.
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask()
+        {
+            public void run()
+            {
+                getLoaderManager().restartLoader(Article_LOADER_ID, null, MainActivity.this);
+            }
+        }, delay, period);
     }
 
     private void initListView(){
