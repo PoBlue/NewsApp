@@ -133,7 +133,7 @@ public final class QueryUtils {
                 String sectionName = currentArticle.getString("sectionName");
                 String url = currentArticle.getString("webUrl");
 
-                Article article = new Article(title,sectionName,date,url);
+                Article article = new Article(title,"Section: " + sectionName,"Time: " + date,url);
 
                 articles.add(article);
             }
