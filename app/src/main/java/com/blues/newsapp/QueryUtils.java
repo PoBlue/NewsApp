@@ -131,8 +131,9 @@ public final class QueryUtils {
                 String title = currentArticle.getString("webTitle");
                 String date = currentArticle.getString("webPublicationDate");
                 String sectionName = currentArticle.getString("sectionName");
+                String url = currentArticle.getString("webUrl");
 
-                Article article = new Article(title,sectionName,date);
+                Article article = new Article(title,sectionName,date,url);
 
                 articles.add(article);
             }

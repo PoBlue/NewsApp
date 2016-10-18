@@ -6,12 +6,13 @@ package com.blues.newsapp;
 
 public class Article {
 
-    private String mTitle,mSectionName,mDate;
+    private String mTitle,mSectionName,mDate,mUrl;
 
-    public Article(String title, String sectionName, String date){
+    public Article(String title, String sectionName, String date,String url){
         mTitle = title;
         mSectionName = sectionName;
         mDate = date;
+        mUrl = url;
     }
 
     public String getTitle() {
@@ -20,6 +21,10 @@ public class Article {
 
     public String getSectionName() {
         return mSectionName;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 
     public String getDate() {
