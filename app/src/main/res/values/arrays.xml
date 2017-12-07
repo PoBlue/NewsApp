@@ -11,4 +11,14 @@
         <item>@string/pref_section_society_value</item>
         <item>@string/pref_section_opinion_value</item>
     </array>
+
+    <array name="pref_tag_option_labels">
+        <item>@string/pref_tag_label_environment</item>
+        <item>@string/pref_tag_label_politics</item>
+    </array>
+
+    <array name="pref_tag_option_values">
+        <item>@string/pref_tag_value_environment</item>
+        <item>@string/pref_tag_value_politics</item>
+    </array>
 </resources>

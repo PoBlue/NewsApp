@@ -59,8 +59,9 @@ public class SettingsActivity extends AppCompatPreferenceActivity {
         super.onCreate(savedInstanceState);
         setupActionBar();
         addPreferencesFromResource(R.xml.pref_news);
-        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_count_key)));
+//        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_count_key)));
         bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_section_key)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_tag_key)));
     }
 
     /**

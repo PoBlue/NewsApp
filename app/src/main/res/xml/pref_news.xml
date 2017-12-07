@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditTextPreference
-        android:defaultValue="@string/pref_count_default"
-        android:key="@string/pref_count_key"
-        android:title="@string/pref_count_title" />
+    <!--<EditTextPreference-->
+        <!--android:defaultValue="@string/pref_count_default"-->
+        <!--android:key="@string/pref_count_key"-->
+        <!--android:title="@string/pref_count_title" />-->
 
     <ListPreference
-        android:defaultValue="@string/pref_section_science_value"
+        android:defaultValue="@string/pref_section_default"
         android:entries="@array/pref_section_option_labels"
         android:entryValues="@array/pref_section_option_values"
         android:key="@string/pref_section_key"
         android:title="@string/pref_section_label" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_tag_default"
+        android:entries="@array/pref_tag_option_labels"
+        android:entryValues="@array/pref_tag_option_values"
+        android:key="@string/pref_tag_key"
+        android:title="@string/pref_tag_label" />
 </PreferenceScreen>

@@ -4,10 +4,12 @@ import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +25,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
-        implements LoaderCallbacks<List<Article>> {
+        implements LoaderCallbacks<List<Article>>, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private static final int Article_LOADER_ID = 1;
     String url = "http://content.guardianapis.com/search?q=debates&api-key=test";
@@ -36,9 +38,48 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupSharePreferences();
         initListView();
         initLoader();
         updateProperly();
+
+    }
+
+    private String buildNewsUrl(String section, String tag) {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("content.guardianapis.com")
+                .appendPath("search")
+                .appendQueryParameter("q", section)
+                .appendQueryParameter("tag", tag)
+                .appendQueryParameter("api-key", "test");
+        return builder.build().toString();
+    }
+
+    private void setupSharePreferences() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String tag = sharedPreferences.getString(getString(R.string.pref_tag_key), getString(R.string.pref_count_default));
+        String section = sharedPreferences.getString(getString(R.string.pref_section_key), getString(R.string.pref_section_default));
+
+        url = buildNewsUrl(section, tag);
+        // Register the listener
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+//        if (key == getString(R.string.pref_count_key)){
+//            String newsCount = sharedPreferences.getString(key, getString(R.string.pref_count_default));
+//            getLoaderManager().restartLoader(Article_LOADER_ID, null, this);
+//        } else if (key == getString(R.string.pref_section_key)){
+//            String section = sharedPreferences.getString(key, getString(R.string.pref_section_default));
+//            getLoaderManager().restartLoader(Article_LOADER_ID, null, this);
+//        }
+        String tag = sharedPreferences.getString(getString(R.string.pref_tag_key), getString(R.string.pref_count_default));
+        String section = sharedPreferences.getString(getString(R.string.pref_section_key), getString(R.string.pref_section_default));
+
+        url = buildNewsUrl(section, tag);
+        getLoaderManager().restartLoader(Article_LOADER_ID, null, this);
     }
 
     private void updateProperly(){
