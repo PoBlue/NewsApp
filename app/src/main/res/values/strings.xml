@@ -4,4 +4,22 @@
     <string name="no_article">no article found</string>
     <string name="section">Section: </string>
     <string name="time">Time: </string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="pref_count_default">1</string>
+    <string name="pref_count_key">news_count</string>
+    <string name="pref_count_title">News Total Count</string>
+
+    <string name="pref_section_label">News Section</string>
+
+    <string name="pref_section_label_science">Science</string>
+    <string name="pref_section_label_society">Society</string>
+    <string name="pref_section_label_opinion">Opinion</string>
+
+    <string name="pref_section_key" translatable="false">section</string>
+
+    <string name="pref_section_science_value" translatable="false">science</string>
+    <string name="pref_section_society_value" translatable="false">society</string>
+    <string name="pref_section_opinion_value" translatable="false">opinion</string>
 </resources>

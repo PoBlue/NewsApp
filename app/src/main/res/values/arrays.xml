@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="pref_section_option_labels">
+        <item>@string/pref_section_label_science</item>
+        <item>@string/pref_section_label_society</item>
+        <item>@string/pref_section_label_opinion</item>
+    </array>
+
+    <array name="pref_section_option_values">
+        <item>@string/pref_section_science_value</item>
+        <item>@string/pref_section_society_value</item>
+        <item>@string/pref_section_opinion_value</item>
+    </array>
+</resources>
